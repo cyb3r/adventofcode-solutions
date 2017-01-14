@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpspec/phpspec": "^3.2",
+        "mockery/mockery": "^0.9.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "Advent\\": "src/"
+        }
+    }
+}
