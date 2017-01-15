@@ -32,4 +32,9 @@ class SolverSpec extends ObjectBehavior {
         $this->beConstructedWith(new Taxicab, new InputParser);
         $this->solve()->shouldBe(242);
     }
+
+    function it_can_solve_a_problem_intersect(){
+        $this->beConstructedWith(new Taxicab, new InputParser);
+        $this->solveIntersect()->shouldBe(150);
+    }
 }

@@ -30,4 +30,22 @@ class Solver {
 
         return $this->taxicab->getBlocksAway();
     }
+
+    public function solveIntersect()
+    {
+        foreach ($this->parser->getInput() as $input) {
+            $move = substr($input, 0, 1);
+            $times = substr($input, 1);
+            switch ($move) {
+                case 'L':
+                    $this->taxicab->goLeft($times);
+                    break;
+                case 'R':
+                    $this->taxicab->goRight($times);
+                    break;
+            }
+        }
+
+        return $this->taxicab->getBlocksAwayIntersect();
+    }
 }

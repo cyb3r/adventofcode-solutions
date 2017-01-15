@@ -53,4 +53,12 @@ class TaxicabSpec extends ObjectBehavior {
         $this->goRight(5)->getBlocksAway()->shouldBe(5);
     }
 
+    function it_can_detect_visited_location(){
+        $this->hasVisitedTwice()->shouldReturn(false);
+    }
+
+    function it_detects_a_twice_visited_location(){
+        $this->goRight(8)->goRight(4)->goRight(4)->goRight(8)->hasVisitedTwice()->shouldBe(true);
+    }
+
 }

@@ -4,52 +4,60 @@ namespace Advent\Day1;
 
 class Taxicab {
 
-    private $position = ['x' => 0, 'y' => 0];
+    private $position;
     protected $directions = ['North', 'East', 'South', 'West'];
-    protected $direction = '0';
+    protected $direction = 0;
+    protected $visitedTwice = false;
+
+    /**
+     * Taxicab constructor.
+     * @internal param $position
+     */
+    public function __construct()
+    {
+        $this->position = new Position(0, 0);
+    }
 
 
     public function getBlocksAway()
     {
-        return abs($this->position['x']) + abs($this->position['y']);
+        return abs($this->position->getX()) + abs($this->position->getY());
     }
 
     public function getX()
     {
-        return $this->position['x'];
+        return $this->position->getX();
     }
 
     public function getY()
     {
-        return $this->position['y'];
+        return $this->position->getY();
     }
 
     public function goNorth($nb = 1)
     {
-        $this->position['y'] += $nb;
+        $this->position->addY($nb);
 
         return $this;
     }
 
-
     public function goSouth($nb = 1)
     {
-        $this->position['y'] -= $nb;
+        $this->position->addY(-1 * $nb);
 
         return $this;
     }
 
     public function goEast($nb = 1)
     {
-        $this->position['x'] += $nb;
+        $this->position->addX($nb);
 
         return $this;
     }
 
-
     public function goWest($nb = 1)
     {
-        $this->position['x'] -= $nb;
+        $this->position->addX(-1 * $nb);
 
         return $this;
     }
@@ -81,5 +89,15 @@ class Taxicab {
         return $this->directions[$this->direction];
     }
 
+    public function hasVisitedTwice()
+    {
+        return !!$this->position->getIntersect();
+    }
+
+    public function getBlocksAwayIntersect()
+    {
+        $intersect = $this->position->getIntersect();
+        return abs($intersect[0]) + abs($intersect[1]);
+    }
 
 }
