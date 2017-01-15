@@ -59,6 +59,6 @@ class BathroomPuzzleSpec extends ObjectBehavior
     }
 
     function it_can_solve_the_problem(){
-        $this->solve()->shouldBe(10);
+        $this->solve()->shouldBe("98575");
     }
 }
